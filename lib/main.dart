@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Number to word',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            Text(converter(_counter)),
+            Text(toWord(_counter)),
           ],
         ),
       ),

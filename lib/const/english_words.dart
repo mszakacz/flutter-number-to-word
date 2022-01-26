@@ -1,4 +1,4 @@
-const List to19 = [
+const List<String> to19 = [
   'zero',
   'one',
   'two',
@@ -21,7 +21,7 @@ const List to19 = [
   'nineteen'
 ];
 
-const List tens = [
+const List<String> tens = [
   'twenty',
   'thirty',
   'forty',
@@ -31,7 +31,7 @@ const List tens = [
   'eighty',
   'ninety'
 ];
-const List denom = [
+const List<String> denom = [
   "",
   "thousand",
   "million",
@@ -54,5 +54,3 @@ const List denom = [
   "novemdecillion",
   "vigintillion"
 ];
-
-List<String> ls = ['a', 'b'];
