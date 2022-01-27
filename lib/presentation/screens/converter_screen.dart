@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_number_to_word/logic/converter.dart';
 import 'package:flutter_number_to_word/logic/cubit/converter_cubit.dart';
+import 'package:flutter/services.dart';
 
 class ConverterScreen extends StatefulWidget {
   const ConverterScreen({Key? key, required this.title}) : super(key: key);
@@ -15,6 +16,7 @@ class ConverterScreen extends StatefulWidget {
 }
 
 class _ConverterScreenState extends State<ConverterScreen> {
+  GlobalKey<ScaffoldState> homeScreenKey = GlobalKey<ScaffoldState>();
   final TextEditingController _textController = TextEditingController();
 
   String get _text => _textController.text;
@@ -90,6 +92,21 @@ class _ConverterScreenState extends State<ConverterScreen> {
                       color: Colors.grey[900],
                     ),
                   ),
+                );
+              },
+            ),
+            BlocBuilder<ConverterCubit, ConverterState>(
+              builder: (context, state) {
+                return IconButton(
+                  icon: const Icon(Icons.copy),
+                  onPressed: () {
+                    Clipboard.setData(
+                        ClipboardData(text: '${state.outputStringNumber}'));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Text has been copied to clipboard.'),
+                      duration: Duration(seconds: 1),
+                    ));
+                  },
                 );
               },
             ),
