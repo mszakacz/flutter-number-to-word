@@ -21,11 +21,11 @@ String convertXXX(int value) {
   if (hundreds > 0) {
     str = to19[hundreds] + ' hundred';
     if (rest > 0) {
-      str = str + " ";
+      str = str + " and ";
     }
   }
   if (rest > 0) {
-    str = str + 'and ' + convertXX(rest);
+    str = str + convertXX(rest);
   }
   return str;
 }
