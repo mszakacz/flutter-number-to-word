@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_number_to_word/logic/converter.dart';
@@ -23,6 +25,10 @@ class _ConverterScreenState extends State<ConverterScreen> {
     super.dispose();
   }
 
+  FutureOr<void> onGoBack() {
+    BlocProvider.of<ConverterCubit>(context).convert(_text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +41,9 @@ class _ConverterScreenState extends State<ConverterScreen> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed('/settings');
+              Navigator.of(context)
+                  .pushNamed('/settings')
+                  .whenComplete(() => onGoBack());
             },
           )
         ],
@@ -63,7 +71,6 @@ class _ConverterScreenState extends State<ConverterScreen> {
                   ElevatedButton(
                     key: const Key('converterScreen_go_iconButton'),
                     onPressed: () => {
-                      print(_text),
                       BlocProvider.of<ConverterCubit>(context).convert(_text),
                     },
                     child: Text('Convert'),

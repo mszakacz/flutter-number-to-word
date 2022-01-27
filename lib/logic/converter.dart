@@ -14,6 +14,13 @@ String convertXX(int value) {
   return 'error';
 }
 
+String toBritish(int value) {
+  int hundreds = (value / 100).floor();
+  int rest = value % 100;
+  String output = to19[hundreds] + ' hundred ' + convertXX(rest);
+  return output;
+}
+
 String convertXXX(int value) {
   String str = '';
   int hundreds = (value / 100).floor();
@@ -30,7 +37,8 @@ String convertXXX(int value) {
   return str;
 }
 
-String toWord(int value) {
+String toWord(int value, bool british) {
+  if (value > 1000 && value < 2000 && british == true) return toBritish(value);
   if (value < 100) {
     return convertXX(value);
   }
@@ -46,7 +54,7 @@ String toWord(int value) {
       int r = value - (l * mod);
       String ret = convertXXX(l) + " " + denom[didx];
       if (r > 0) {
-        ret = ret + ", " + toWord(r);
+        ret = ret + ", " + toWord(r, british);
       }
       return ret;
     }
