@@ -8,7 +8,7 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(
             builder: (_) => ConverterScreen(
-                  title: "Concerter",
+                  title: "Number To Word Converter",
                 ));
       case '/settings':
         return MaterialPageRoute(
