@@ -7,10 +7,16 @@ import 'package:flutter_number_to_word/logic/converter.dart';
 part 'converter_state.dart';
 
 class ConverterCubit extends Cubit<ConverterState> {
-  ConverterCubit() : super(ConverterState(outputStringNumber: ' '));
+  ConverterCubit()
+      : super(ConverterState(outputStringNumber: ' ', britishCounting: false));
 
   void convert(String? inputString) => emit(ConverterState(
-      outputStringNumber: toWord(int.parse(inputString.toString()))));
+      britishCounting: state.britishCounting,
+      outputStringNumber:
+          toWord(int.parse(inputString.toString()), state.britishCounting)));
+
+  void switchBritish(bool value) => emit(ConverterState(
+      outputStringNumber: state.outputStringNumber, britishCounting: value));
 
   // void convert(String? inputString) {
   //   int value = int.parse(inputString.toString());

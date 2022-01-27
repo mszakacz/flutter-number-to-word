@@ -21,6 +21,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
           backgroundColor: Colors.orange,
           title: Text(widget.title),
         ),
-        body: Text('There will be Settings'));
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('British English Counting'),
+              BlocBuilder<ConverterCubit, ConverterState>(
+                builder: (context, state) {
+                  return Switch(
+                    value: state.britishCounting,
+                    onChanged: (value) => {
+                      BlocProvider.of<ConverterCubit>(context)
+                          .switchBritish(value)
+                    },
+                    activeTrackColor: Colors.lightBlue[200],
+                    activeColor: Colors.blue[700],
+                  );
+                },
+              )
+            ],
+          ),
+        ));
   }
 }
