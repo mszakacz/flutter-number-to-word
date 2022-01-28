@@ -17,7 +17,7 @@ String convertXX(int value) {
 String toBritish(int value) {
   int hundreds = (value / 100).floor();
   int rest = value % 100;
-  String output = to19[hundreds] + ' hundred ' + convertXX(rest);
+  String output = to19[hundreds] + ' hundred and ' + convertXX(rest);
   return output;
 }
 
@@ -54,7 +54,10 @@ String toWord(int value, bool british) {
       int r = value - (l * mod);
       String ret = convertXXX(l) + " " + denom[didx];
       if (r > 0) {
-        ret = ret + ", " + toWord(r, british);
+        if (r < 100)
+          ret = ret + " and " + toWord(r, british);
+        else
+          ret = ret + " " + toWord(r, british);
       }
       return ret;
     }
