@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_number_to_word/logic/converter.dart';
 import 'package:flutter_number_to_word/logic/cubit/converter_cubit.dart';
 import 'package:flutter/services.dart';
 
@@ -38,14 +37,14 @@ class _ConverterScreenState extends State<ConverterScreen> {
         title: Text(widget.title),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.settings,
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.of(context)
-                  .pushNamed('/settings')
-                  .whenComplete(() => onGoBack());
+              Navigator.of(context).pushNamed('/settings').whenComplete(
+                    () => onGoBack(),
+                  );
             },
           )
         ],
@@ -78,12 +77,12 @@ class _ConverterScreenState extends State<ConverterScreen> {
                     onPressed: () => {
                       BlocProvider.of<ConverterCubit>(context).convert(_text),
                     },
-                    child: Text('Convert'),
+                    child: const Text('Convert'),
                   )
                 ],
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             BlocBuilder<ConverterCubit, ConverterState>(
               builder: (context, state) {
                 return Visibility(
@@ -92,7 +91,7 @@ class _ConverterScreenState extends State<ConverterScreen> {
                       Padding(
                         padding: const EdgeInsets.all(30.0),
                         child: Text(
-                          '${state.outputStringNumber}',
+                          state.outputStringNumber,
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey[900],
@@ -102,12 +101,19 @@ class _ConverterScreenState extends State<ConverterScreen> {
                       IconButton(
                         icon: const Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(
-                              text: '${state.outputStringNumber}'));
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('Text has been copied to clipboard.'),
-                            duration: Duration(seconds: 1),
-                          ));
+                          Clipboard.setData(
+                            ClipboardData(
+                              text: state.outputStringNumber,
+                            ),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Text has been copied to clipboard.',
+                              ),
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
                         },
                       ),
                     ],

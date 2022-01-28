@@ -7,14 +7,16 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) => ConverterScreen(
-                  title: "Number To Word Converter",
-                ));
+          builder: (_) => const ConverterScreen(
+            title: "Number To Word Converter",
+          ),
+        );
       case '/settings':
         return MaterialPageRoute(
-            builder: (_) => SettingsScreen(
-                  title: "Settings",
-                ));
+          builder: (_) => const SettingsScreen(
+            title: "Settings",
+          ),
+        );
       default:
         return null;
     }

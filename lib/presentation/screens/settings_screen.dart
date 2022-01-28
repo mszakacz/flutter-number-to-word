@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_number_to_word/logic/cubit/converter_cubit.dart';
 
 class SettingsScreen extends StatefulWidget {
-  SettingsScreen({Key? key, required this.title}) : super(key: key);
+  const SettingsScreen({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -26,7 +26,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('British English Counting'),
+              const Text('British English Counting'),
               BlocBuilder<ConverterCubit, ConverterState>(
                 builder: (context, state) {
                   return Switch(
