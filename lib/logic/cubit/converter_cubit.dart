@@ -8,24 +8,28 @@ part 'converter_state.dart';
 
 class ConverterCubit extends Cubit<ConverterState> {
   ConverterCubit()
-      : super(ConverterState(outputStringNumber: ' ', britishCounting: false));
-
-  void convert(String? inputString) => emit(ConverterState(
-      britishCounting: state.britishCounting,
-      outputStringNumber:
-          toWord(int.parse(inputString.toString()), state.britishCounting)));
+      : super(ConverterState(
+            outputStringNumber: ' ', britishCounting: false, visible: false));
 
   void switchBritish(bool value) => emit(ConverterState(
-      outputStringNumber: state.outputStringNumber, britishCounting: value));
+      outputStringNumber: state.outputStringNumber,
+      britishCounting: value,
+      visible: state.visible));
 
-  // void convert(String? inputString) {
-  //   int value = int.parse(inputString.toString());
-  //   String outputString = toWord(value);
+  void convert(String? inputString) {
+    bool visible = true;
+    String outputString;
+    if (inputString == null || inputString.isEmpty) {
+      outputString = '';
+      visible = false;
+    } else {
+      int value = int.parse(inputString.toString());
+      outputString = toWord(value, state.britishCounting);
+    }
 
-  //   emit(ConverterState(
-  //       inputStringNumber: inputString,
-  //       value: value,
-  //       outputStringNumber: outputString));
-  //   print('input: $inputString, state: ${state.value.toString()}');
-  // }
+    emit(ConverterState(
+        britishCounting: state.britishCounting,
+        outputStringNumber: outputString,
+        visible: visible));
+  }
 }

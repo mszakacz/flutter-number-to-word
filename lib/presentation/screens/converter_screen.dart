@@ -63,6 +63,9 @@ class _ConverterScreenState extends State<ConverterScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: _textController,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                         decoration: const InputDecoration(
                           labelText: 'Number',
                           hintText: '1234',
@@ -83,30 +86,33 @@ class _ConverterScreenState extends State<ConverterScreen> {
             SizedBox(height: 50),
             BlocBuilder<ConverterCubit, ConverterState>(
               builder: (context, state) {
-                return Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Text(
-                    '${state.outputStringNumber}',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[900],
-                    ),
+                return Visibility(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Text(
+                          '${state.outputStringNumber}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[900],
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(
+                              text: '${state.outputStringNumber}'));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Text has been copied to clipboard.'),
+                            duration: Duration(seconds: 1),
+                          ));
+                        },
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
-            BlocBuilder<ConverterCubit, ConverterState>(
-              builder: (context, state) {
-                return IconButton(
-                  icon: const Icon(Icons.copy),
-                  onPressed: () {
-                    Clipboard.setData(
-                        ClipboardData(text: '${state.outputStringNumber}'));
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('Text has been copied to clipboard.'),
-                      duration: Duration(seconds: 1),
-                    ));
-                  },
+                  visible: state.visible,
                 );
               },
             ),
