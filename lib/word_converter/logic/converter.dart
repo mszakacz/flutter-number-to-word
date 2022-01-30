@@ -1,4 +1,4 @@
-import 'package:flutter_number_to_word/const/english_words.dart';
+import 'package:flutter_number_to_word/word_converter/const/english_words.dart';
 import 'dart:math';
 
 String convertXX(int value) {

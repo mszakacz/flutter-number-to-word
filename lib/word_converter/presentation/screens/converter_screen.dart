@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_number_to_word/logic/cubit/converter_cubit.dart';
+import 'package:flutter_number_to_word/word_converter/logic/cubit/converter_cubit.dart';
 import 'package:flutter/services.dart';
 
 class ConverterScreen extends StatefulWidget {
