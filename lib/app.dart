@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_number_to_word/logic/cubit/converter_cubit.dart';
-import 'package:flutter_number_to_word/presentation/router/app_router.dart';
+import 'package:flutter_number_to_word/word_converter/logic/cubit/converter_cubit.dart';
+import 'package:flutter_number_to_word/word_converter/router/app_router.dart';
 
 class App extends StatefulWidget {
   @override
