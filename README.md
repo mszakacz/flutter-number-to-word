@@ -1,16 +1,14 @@
-# flutter_number_to_word
+# number_to_word_converter
 
-A new Flutter project.
+[Link to the App](https://number-to-word-converter.web.app)
 
-## Getting Started
+[Link to the Repository](https://github.com/mszakacz/flutter-number-to-word#readme)
 
-This project is a starting point for a Flutter application.
+### App functionalities:
+App is a simply number to word converter. It allows user to put the number and it returns a word representation of this number. In settings user can change the output from standard ones to British English Counting - it returns different output for the years between 1000 and 1999 (e.g. nineteen hundred and ninety-nine). After returning the output, user can easily copy the words using 'copy' button.
 
-A few resources to get you started if this is your first Flutter project:
+### Project Description:
+This is my very first project where I use Flutter. I used Cubit as a state management. 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Key technologies:
+Cubit, unit test
