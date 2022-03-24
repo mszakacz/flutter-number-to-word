@@ -18,8 +18,11 @@ class _AppState extends State<App> {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+          appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+          fontFamily: 'Noto Sans',
+          colorScheme: ColorScheme.fromSwatch(
+            accentColor: const Color(0xFF13B9FF),
+          ),
         ),
         onGenerateRoute: _appRouter.onGenerateRout,
       ),
